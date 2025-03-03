@@ -1,0 +1,15 @@
+{   "dataset_name": "mnist",
+    "modelnamefile": "mnist_m8_5epochs",
+    "path_to_images": "../data/mnist/train/",
+    "supervised_prob": 0.5,
+    "num_epochs": 2, 
+    "batch_size": 256,
+    "margin": 8, 
+    "COMMENT_margin_withprior": 8, 
+    "output_shape": [28,28],
+    "training_split_percentage": 100,
+    "METTRE100000cidessoussionveutgagnerdutemps": "100000parex",
+    "evaluation_interval": 1000000
+  }
+  
+    

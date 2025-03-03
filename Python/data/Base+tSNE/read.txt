@@ -1,0 +1,7 @@
+train : 5k tirées du test 
+test : 60k = "train data initialement"
+validation copie de 10% du vrai train (ici test donc pas de recouvrement avec le train)
+
+test avec tnse appliqué sur les 5k (train)
+pour générer les dij aisément (sur les tsne)
+voir si cela généralise sur les 60k

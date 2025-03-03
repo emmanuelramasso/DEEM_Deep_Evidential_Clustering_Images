@@ -687,7 +687,7 @@ while continueEpochs
             fxj = ismember(gather(extractdata(dl_idx_col)), priorIdx);
             fxj = gpuArray(dlarray(fxj,'CB'));
         else
-            fxi = [];
+            fxi = []; 
             fxj = [];
         end
 

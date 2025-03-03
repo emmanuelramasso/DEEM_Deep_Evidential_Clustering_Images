@@ -1,0 +1,93 @@
+{
+    "training_mode": "PRECOMPUTED_EMBEDDINGS",
+
+    "dataset": "mnist",
+
+    "tb_filesuffix": "tsne_0.4_pasDML_pairs",
+
+    "COMMENT_DML": "not used if training_mode is not DML", 
+    "model_path_DML": "",
+    "model_name_DML": "",
+
+    "image_folder_train": "../data/Base+tSNE/train",
+    "image_folder_test": "../data/Base+tSNE/test/",
+    "image_folder_valid": "",
+    
+    "COMMENT_EMBED": "If training mode is PRECOMPUTED_EMBEDDINGS then use it",
+    "jsonfile_precompEmbeddings": "../data/Base+tSNE/embedding.json",
+
+    "model_pretrained": "",  
+
+    "COMMENT_LR": "Depending on the scheduler can be used or not see below",
+    "base_learning_rate": 0.001,
+    "batch_size": 128,
+    "num_epochs": 1000,
+    "nitermax": 20000,
+    "niterlastphase": 0,
+    
+    "min_delta_acc_earlystop": 0.0001,
+    "patience_acc_earlystop": 5,
+    "log_interval_test": 0.3,
+    "log_interval_val": 0.2,
+
+    "probprior": 0.4,
+    "useDEEMprior_pair": 1,
+    "useDEEMprior_label": 0,
+    "prob_sampleforce_DEEM_pairs": 0.9,
+
+    "COMMENT_prior": "if DML is not used these lines are not considered",
+    "useDMLprior_pairs2labels": 0,
+    "useDMLprior_pairs": 0,
+    "prob_sampleforceDMLprior_pairs": 0.0,
+    
+    "dist_normalisation": "exp",
+    "numclasses": 10,
+    "POUR CHANGER LA TAILLE CHANGER ICI, [3 224 224] par ex mais aussi changer dans EVNN_datasets.py -> transform 28 ou 224 manuel": 0,
+    "input_shape": [
+        1,
+        28,
+        28
+    ],
+    
+    "loss_evnn": "mse",
+    "loss_prior": "mse",
+    "NOT_USED_YET_weight_loss_evnn": 1.0,
+    "NOT_USED_YET_weight_loss_prior": 1.0,
+    
+    "COMMENTnetwork": "resnet18",
+    "network": "simple1",
+    
+    "******SCHEDULER USED*******": "*************",
+    "1_scheduler": "OneCycleLR",
+    "2_scheduler": "StepLR",
+    "3_scheduler": "CyclicLR",
+    "scheduler": "ConstantLR",
+    "5_scheduler": "staircase",
+    
+    "******Param for each scheduler*******": "*************",
+    "******For CyclicLR*******": "*************",
+    "//COMMENT2a": "6500 maxit, Cyclic LR uses cycles. With step_size_up and step_size_down we can set the dynamics",
+    "//COMMENT2a2": "Use triangular2 for amplitude decay by 1/2 each cycle, and triangular otherwise",
+    "mode_CyclicLR": "triangular",
+    "step_size_up_CyclicLR": 2000,
+    "step_size_down_CyclicLR": 4000,
+    "eta_min": 0.0001,
+    "COMMENT_eta_max": "Replaced by base_learning_rate",
+    "//COMMENT2b": "With nitermax = step_size_up+step_size_down+niterlastphase we have 1 cycle",
+    "//COMMENT2c": "nitermax must be >= step_size_up+step_size_down+niterlastphase",
+    "//COMMENT2d": "if a cyclic scheduler is used and in particuler 1 cycle the parameter niterlastphase is used for the last phase maintaining the scheduler constant",
+    "*****For OneCycleLR*******": "*************",
+    "COMMENT_max_learning_rate": 0.001,
+    "3phases": 0,
+    "*****For StepLR*******": "*************",
+    "step_size_StepLR": 10,
+    "gamma_StepLR": 0.9,
+    "*****For ConstantLR*******": "*************",
+    "gamma_constLR": 1.0,
+    "nbepoch_apply_gamma": "inf",
+    "*****Optimizer*******": "*************",
+    "optimizer": "adam",
+    "//COMMENT5": "Weight decay used if adamw used",
+    "adamw_weight_decay": 0.005,
+    "save_model": 0
+}
