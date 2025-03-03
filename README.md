@@ -4,7 +4,7 @@ This code implements "DEEM: A Novel Approach to Semi-Supervised and Unsupervised
 
 Two versions are proposed: One in MATLAB, one in Python. The Python version includes several examples and distance-metric learning. 
 
-The documentation is described in the Python repository, see documentation_fr.md (french) and documentation_en.md (english).
+The documentation is described in the Python repository, see Python/docs/documentation_fr.md (french) and Python/docs/documentation_en.md (english).
 
 
  
