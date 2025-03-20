@@ -120,3 +120,11 @@ Dans le cas du DML, DEEM utilise les embeddings générés par le DML à chaque 
 `python3 EVNN_main_withDML.py --jsonfile config_mnist_tsne0.1.json`
 
 où "training_mode": "PRECOMPUTED_EMBEDDINGS", "model_path_DML": "", "model_name_DML": "", "image_folder_train": "../data/Base+tSNE/train", "image_folder_test": "data/Base+tSNE/test/", "image_folder_valid": "", "jsonfile_precompEmbeddings": "data/Base+tSNE/embedding.json", "probprior": 0.4, "useDEEMprior_pair": 1, "useDEEMprior_label": 0, "prob_sampleforce_DEEM_pairs": 0.9. Donc le modèle va être entrainé avec les images et les t-SNE et $40\%$ d'a priori. Le fichier de configuration dans le cas présent utilise ResNet18.
+
+## Ajouter un jeu de données
+
+Le code fonctionne avec MNIST. Si vous utiliser un autre jeu il faut modifier les fichiers suivants :
+- Le .json de configuration :   "input_shape": [1, H, W] si en niveau de gris, "input_shape": [3, H, W] si couleur
+- Dans EVNN_model.py, ligne 16: def model_loader(), si vous souhaitez utiliser le réseau simple ajouter "elif dataset=='votre_jeu': model = CustomCNN(device=device,numChannels=1 ou 3).to(device)" 
+- Dans EVNN_config.py ligne 65,  ajouter "elif dataset == 'votre_jeu':  coloredinput=False ou True"
+- Dans EVNN_datasets.py, ligne 134, ajouter "elif dataset_name=="votre_jeu": transformTest = transform" pour un RGB, sinon "transformTest = transforms.Compose([transforms.Grayscale(), # because image loader loads RGB! transforms.ToTensor(), ])
